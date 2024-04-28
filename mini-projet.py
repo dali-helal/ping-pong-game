@@ -68,7 +68,7 @@ def main():
             ball = Ball(WIDTH_SCREEN / 2, HEIGHT_SCREEN / 2, ball_radius, random.choice([-1, 1]) * ball_speed_x, random.choice([-1, 1]) * ball_speed_y)
             score1 += 1
 
-        if ball.rect.colliderect(player1) or ball.rect.colliderect(player2):
+        if ball.collision(player1) or ball.collision(player2):
             ball.reflect_horizontal()
 
         screen.blit(fond, (0, 0))

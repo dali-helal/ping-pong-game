@@ -16,3 +16,5 @@ class Ball:
 
     def reflect_vertical(self):
         self.speed_y *= -1
+    def collision(self,targetRect):
+        return self.rect.colliderect(targetRect)
