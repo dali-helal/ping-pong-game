@@ -13,12 +13,12 @@ def main():
     screen.blit(fond, (0, 0))
 
     ball_radius = 10
-    ball_speed_x = 7
-    ball_speed_y = 7
+    ball_speed_x = 8
+    ball_speed_y = 8
 
-    paddle_width = 15
-    paddle_height = 100
-    paddle_speed = 7
+    bar_width = 15
+    bar_height = 100
+    bar_speed = 7
 
     WHITE = (255, 255, 255)
     RED = (255, 0, 0)
@@ -26,8 +26,8 @@ def main():
    
 
     ball = Ball(WIDTH_SCREEN / 2, HEIGHT_SCREEN / 2, ball_radius, random.choice([-1, 1]) * ball_speed_x, random.choice([-1, 1]) * ball_speed_y)
-    player1 = pygame.Rect(50, HEIGHT_SCREEN / 2 - paddle_height / 2, paddle_width, paddle_height)
-    player2 = pygame.Rect(895, HEIGHT_SCREEN / 2 - paddle_height / 2, paddle_width, paddle_height)
+    player1 = pygame.Rect(30, HEIGHT_SCREEN / 2 - bar_height / 2, bar_width, bar_height)
+    player2 = pygame.Rect(915, HEIGHT_SCREEN / 2 - bar_height / 2, bar_width, bar_height)
 
     score1 = 0
     score2 = 0
@@ -49,13 +49,13 @@ def main():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_z] and player1.top > 0:
-            player1.y -= paddle_speed
+            player1.y -= bar_speed
         if keys[pygame.K_s] and player1.bottom < HEIGHT_SCREEN:
-            player1.y += paddle_speed
+            player1.y += bar_speed
         if keys[pygame.K_UP] and player2.top > 0:
-            player2.y -= paddle_speed
+            player2.y -= bar_speed
         if keys[pygame.K_DOWN] and player2.bottom < HEIGHT_SCREEN:
-            player2.y += paddle_speed
+            player2.y += bar_speed
 
         ball.move()
 
@@ -83,11 +83,11 @@ def main():
         timer_text = timer_font.render("Time: " + str(remaining_time), True, WHITE)
         screen.blit(timer_text, ((WIDTH_SCREEN - timer_text.get_width()) // 2, 50))
 
-        score_text1 = font.render(str(score1), True, BLUE)
-        score_text2 = font.render(str(score2), True, RED)
+        score_text_player1 = font.render(str(score1), True, BLUE)
+        score_text_player2 = font.render(str(score2), True, RED)
 
-        screen.blit(score_text1, (WIDTH_SCREEN // 4, 50))  # 1/4
-        screen.blit(score_text2, (WIDTH_SCREEN * 3 // 4, 50))  # 3/4
+        screen.blit(score_text_player1, (WIDTH_SCREEN // 4, 50))  # 1/4
+        screen.blit(score_text_player2, (WIDTH_SCREEN * 3 // 4, 50))  # 3/4
 
         if remaining_time == 0 or score1 == 15 or score2 == 15:
             winner = "Player 1" if score1 > score2 else "Player 2"

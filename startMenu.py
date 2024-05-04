@@ -9,9 +9,9 @@ def start_menu(screen, font):
     screen.blit(background_image, (0, 0)) 
 
     title_text = font.render("Ping Pong Game", True, WHITE)
-    instruction_text = font.render("Press SPACE to start the game", True, WHITE)
+    sub_text = font.render("Press SPACE to start the game", True, WHITE)
     screen.blit(title_text, ((screen.get_width() - title_text.get_width()) // 2, 200))
-    screen.blit(instruction_text, ((screen.get_width() - instruction_text.get_width()) // 2, 300))
+    screen.blit(sub_text, ((screen.get_width() - sub_text.get_width()) // 2, 300))
     pygame.display.flip()
 
     waiting = True

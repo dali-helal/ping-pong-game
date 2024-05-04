@@ -19,10 +19,8 @@ def end_menu(screen, font, winner):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
                     pygame.quit()
-                    #exit()
                 elif event.key == pygame.K_r:
                     waiting = False
